@@ -27,18 +27,29 @@ public class AuthService {
                 user.getPasswordHash());
     }
 
+    // check whether email is registered and hashing the password.
     public boolean register(RegisterRequest request){
         if(userRepository.existsByEmail(request.getEmail())){
             return false;
         }
 
         String rawPassword = request.getPassword();
-        String Hash = hashPassword(rawPassword);
+        String passwordHash = hashPassword(rawPassword);
 
-        //save to DB
-        // ...
+        User user = User.builder()
+                .name(request.getName())
+                .surname(request.getSurname())
+                .yearOfStudy(request.getYearOfStudy())
+                .email(request.getEmail())
+                .passwordHash(passwordHash)
+                .role(Role.STUDENT)
+                .build();
 
-        return false;
+        userRepository.save(user);
+
+        System.out.println("USER SAVED, ID = " + user.getId());
+
+        return true;
     }
 
 

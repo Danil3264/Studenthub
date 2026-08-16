@@ -1,9 +1,7 @@
 package com.studenthub.auth.dto;
 
 
-import jakarta.validation.constraints.Email;
-import jakarta.validation.constraints.NotBlank;
-import jakarta.validation.constraints.Size;
+import jakarta.validation.constraints.*;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
@@ -18,6 +16,11 @@ public class RegisterRequest {
 
     @NotBlank
     private String surname;
+
+
+    @NotNull
+    @Min(1)
+    private Integer yearOfStudy;
 
     @Email
     @NotBlank
