@@ -25,6 +25,7 @@ public class AuthService {
 
         return passwordEncoder.matches(request.getPassword(),
                 user.getPasswordHash());
+
     }
 
     // check whether email is registered and hashing the password.
