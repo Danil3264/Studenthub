@@ -11,24 +11,28 @@ public class AuthService {
 
     private final UserRepository userRepository;
     private final PasswordEncoder passwordEncoder;
+    private final JwtService jwtService;
 
-    public AuthService(UserRepository userRepository, PasswordEncoder passwordEncoder) {
+    public AuthService(UserRepository userRepository, PasswordEncoder passwordEncoder, JwtService jwtService) {
         this.userRepository = userRepository;
         this.passwordEncoder = passwordEncoder;
+        this.jwtService = jwtService;
     }
 
-
-    public boolean login(LoginRequest request) {
+    public String login(LoginRequest request) {
 
         User user = userRepository.findByEmail(request.getEmail())
                 .orElseThrow(() -> new RuntimeException("User not found"));
 
-        return passwordEncoder.matches(request.getPassword(),
-                user.getPasswordHash());
+        if(!passwordEncoder.matches(request.getPassword(),user.getPasswordHash()))
+            throw new RuntimeException("Invalid credentials");
 
+        return jwtService.createToken(request.getEmail(), user.getRole().name(), user.getId().toString());
     }
 
+
     // check whether email is registered and hashing the password.
+    // register() shoulds return HTTP-answer/DTO. - must be FIXED
     public boolean register(RegisterRequest request){
         if(userRepository.existsByEmail(request.getEmail())){
             return false;
