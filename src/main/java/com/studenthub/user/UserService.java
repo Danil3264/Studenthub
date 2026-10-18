@@ -1,22 +1,25 @@
 package com.studenthub.user;
 
+
+import lombok.RequiredArgsConstructor;
+import org.springframework.stereotype.Service;
+
+@RequiredArgsConstructor
+@Service
 public class UserService {
+
+    private final UserRepository userRepository;
+
     public void changeName(User user, String newName){
-        user.setName(newName);
+//        userRepository.       ;
     }
 
-    public User getUser(User user) {
-        return user;
+
+    public User getUser(Long id) {
+        return userRepository.findById(id);
     }
 
-    // make after the authorization
+    // Change to work with the database - removeById()
+    //    public void removeUser(User user){
 
-// Change to work with the database - removeById()
-//    public void removeUser(User user){
-//        if(user == null) return;
-//        user.setName(null);
-//        user.setSurname(null);
-//        user.setEmail(null);
-//        user = null;
-//    }
 }

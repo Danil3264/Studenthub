@@ -19,7 +19,7 @@ public class AuthController {
     }
 
     @PostMapping("/register")
-    public boolean register(@Valid @RequestBody RegisterRequest request){
+    public boolean register(@Valid @RequestBody RegisterRequest request){ // 400 - Bad Request, @Valid found a mistake in data
         return authService.register(request);
     }
 

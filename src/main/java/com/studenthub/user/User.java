@@ -18,7 +18,7 @@ public class User {
     private Long id;
     private String name;
     private String surname;
-    private int yearOfStudy;
+    private Integer yearOfStudy;
     @Column(unique = true, nullable = false)
     private String email;
 

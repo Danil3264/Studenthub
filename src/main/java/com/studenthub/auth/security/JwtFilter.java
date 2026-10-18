@@ -45,7 +45,7 @@ public class JwtFilter extends OncePerRequestFilter {
                     null,
                     List.of(new SimpleGrantedAuthority("ROLE_" + role))
         );
-        //SecurityContextHolder.getContext().getAuthentication() == null -> have to be, because user can be authorised already
+        //SecurityContextHolder.getContext().getAuthentication() == null -> have to be, because user can be authorized already
 
         SecurityContextHolder.getContext()
                 .setAuthentication(authenticationToken);

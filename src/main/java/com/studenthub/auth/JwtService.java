@@ -37,7 +37,7 @@ public class JwtService {
         "id": "%s",
         "exp": %d
         }
-        """.formatted(email, role, id, expirationDate);
+        """.formatted(email, role, id, expirationDate); // WHY sub - email ?? sub - subject -> user ID or unique identifier
 
 
         String encodedHeader = Base64.getUrlEncoder()
