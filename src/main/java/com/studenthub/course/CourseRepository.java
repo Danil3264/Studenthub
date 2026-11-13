@@ -8,8 +8,8 @@ import java.util.Optional;
 
 @Repository
 public interface CourseRepository extends JpaRepository<Course, Long> {
-    Optional<Course> findByCode(Long code);
-    boolean existsByCode(Long code);
+    Optional<Course> findByCode(String code);
+    boolean existsByCode(String code);
     List<Course> findByTeacherId(Long teacherId);
     List<Course> findByTitleContainingIgnoreCase(String title);
 }

@@ -32,7 +32,7 @@ public class AuthService {
 
 
     // check whether email is registered and hashing the password.
-    // register() shoulds return HTTP-answer/DTO. - must be FIXED
+    // register() should return HTTP-answer/DTO. - must be FIXED
     public boolean register(RegisterRequest request){
         if(userRepository.existsByEmail(request.getEmail())){
             return false;

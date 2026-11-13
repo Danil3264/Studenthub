@@ -2,6 +2,7 @@ package com.studenthub.user;
 
 import jakarta.persistence.*;
 import lombok.*;
+import org.hibernate.annotations.CreationTimestamp;
 
 import java.time.LocalDateTime;
 
@@ -25,5 +26,6 @@ public class User {
     private String passwordHash;
     @Enumerated(EnumType.STRING)
     private Role role;
+    @CreationTimestamp
     private LocalDateTime createdAt;
 }
