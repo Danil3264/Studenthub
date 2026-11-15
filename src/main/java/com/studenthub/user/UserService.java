@@ -20,9 +20,7 @@ public class UserService{
 
 
     public UserResponse getUserById(Long id) {
-
         User user = userRepository.findById(id).orElseThrow(() -> new ResponseStatusException(HttpStatus.NOT_FOUND, "User is not found with id: " + id));
-
         return userResponseMapper(user);
     }
     public UserResponse findByEmail(String email){
